@@ -4,11 +4,26 @@ var express = require('express'),
   	io = require('socket.io').listen(server);
 var PUBLIC_DIR = 'public';
 	
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(app.router);
 app.use(express.static(PUBLIC_DIR));
 
-app.get('/', function(req, res){
-	res.sendfile(PUBLIC_DIR + '/index.html');
+// var mongoose = require('mongoose'),
+// db = mongoose.connect('mongodb://127.0.0.1:27017/smat');
+
+var routes = require('./routes/'),
+middleware = require('./middleware');
+require('./routes.js').routes.forEach(function(r) {
+  var mid = r.middleware || [],
+  args = [];
+  mid.forEach(function(m) {
+    args.push(middleware[m]);
+  });
+  args.unshift(r.path);
+  args.push(routes[r.route]);
+  app[r.method || 'get'].apply(app, args);
 });
 
 server.listen(3000);
-console.log("listening");
+console.log("listening on port 3000");
