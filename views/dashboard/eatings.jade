@@ -1,0 +1,14 @@
+table
+  thead
+    tr
+      th
+      th Lunch
+      th Dinner
+  tbody
+  each person in people
+    tr
+      td= person.name
+      td
+        input(type='checkbox', name='lunch', checked=person.lunch, disabled=true)
+      td
+        input(type='checkbox', name='dinner', checked=person.dinner, disabled=true)
