@@ -1,16 +1,16 @@
 var express = require('express'),
-	app = express(),
-  	server = require('http').createServer(app),
-  	io = require('socket.io').listen(server);
+app = express(),
+server = require('http').createServer(app),
+io = require('socket.io').listen(server);
 var PUBLIC_DIR = 'public';
-	
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(app.router);
 app.use(express.static(PUBLIC_DIR));
 
-// var mongoose = require('mongoose'),
-// db = mongoose.connect('mongodb://127.0.0.1:27017/smat');
+var mongoose = require('mongoose'),
+db = mongoose.connect('mongodb://127.0.0.1:27017/dashboard');
 
 var routes = require('./routes/'),
 middleware = require('./middleware');
