@@ -8,12 +8,12 @@ exports.routes = [
   route: 'dashboard-index'
 },
 {
-  path: '/eatings/update',
-  route: 'eatings-update',
+  path: '/meals/update',
+  route: 'meals-update',
   method: 'post'
 },
 {
-  path: '/eatings/update/:name',
-  route: 'eatings-update-client'
+  path: '/meals/update/:name',
+  route: 'meals-update-client'
 }
 ];
