@@ -1,7 +1,7 @@
 var express = require('express'),
-	app = express(),
-  	server = require('http').createServer(app),
-  	io = require('socket.io').listen(server),
+  app = express(),
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server),
     cta = require("./cta-fetcher.js").ctaJSON;
 
 var PUBLIC_DIR = 'public';
@@ -13,7 +13,8 @@ app.use(app.router);
 app.use(express.static(PUBLIC_DIR));
 
 var mongoose = require('mongoose'),
-db = mongoose.connect('mongodb://127.0.0.1:27017/dashboard');
+    mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/mydb',
+    db = mongoose.connect(mongoUri);
 
 var routes = require('./routes/'),
 middleware = require('./middleware');
