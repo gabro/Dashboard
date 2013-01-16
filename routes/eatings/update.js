@@ -15,7 +15,7 @@
     eating.dinner = req.body.dinner ? true : false;
     eating.date = today;
     eating.save(function(err) {
-      res.redirect('/eatings/update/' + req.body.name);
+      res.end(JSON.stringify({err: {}}));
     });
   });
 };

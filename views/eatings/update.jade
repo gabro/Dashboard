@@ -3,9 +3,11 @@ html
   head
     title= title
     script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js")
+    script(type="text/javascript", src="/js/eatings/update-client.js")
+    link(rel="stylesheet", href="/css/eatings/update-client.css")
   
   body
-    form(action='/eatings/update', method='post')
+    form(action='/eatings/update', method='post', id='eatings-update')
       input(type='hidden', name='name', value=selfName)
       table
         thead
@@ -21,4 +23,3 @@ html
               input(type='checkbox', name='lunch', checked=person.lunch, disabled=person.disabled)
             td
               input(type='checkbox', name='dinner', checked=person.dinner, disabled=person.disabled)
-      input(type='submit')
