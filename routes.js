@@ -11,5 +11,9 @@ exports.routes = [
   path: '/eatings/update',
   route: 'eatings-update',
   method: 'post'
+},
+{
+  path: '/eatings/update/:name',
+  route: 'eatings-update-client'
 }
 ];

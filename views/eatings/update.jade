@@ -1,0 +1,24 @@
+!!!
+html
+  head
+    title= title
+    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js")
+  
+  body
+    form(action='/eatings/update', method='post')
+      input(type='hidden', name='name', value=selfName)
+      table
+        thead
+          tr
+            th
+            th Lunch
+            th Dinner
+        tbody
+        each person in people
+          tr
+            td= person.name
+            td
+              input(type='checkbox', name='lunch', checked=person.lunch, disabled=person.disabled)
+            td
+              input(type='checkbox', name='dinner', checked=person.dinner, disabled=person.disabled)
+      input(type='submit')

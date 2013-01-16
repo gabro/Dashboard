@@ -6,6 +6,7 @@ var PUBLIC_DIR = 'public';
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+app.use(express.bodyParser());
 app.use(app.router);
 app.use(express.static(PUBLIC_DIR));
 

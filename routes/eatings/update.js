@@ -11,11 +11,11 @@
       eating = new Eating();
     }
     eating.name = req.body.name;
-    eating.lunch = req.body.lunch == 'yes' ? true : false;
-    eating.dinner = req.body.dinner == 'yes' ? true : false;
+    eating.lunch = req.body.lunch ? true : false;
+    eating.dinner = req.body.dinner ? true : false;
     eating.date = today;
     eating.save(function(err) {
-      res.end({error: undefined});
+      res.redirect('/eatings/update/' + req.body.name);
     });
   });
 };
