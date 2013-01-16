@@ -2,17 +2,16 @@ script
   function compute() {
     mb = new MoneyBook();
     mb.parse($("#inputfile").val());
-    $("#output").html(mb.computeSummary() + mb.computeSummaryByDate());
+    mb.computeSummary();
+    mb.computeSummaryByDate();
     drawChart(mb, "chart_div");
     $("#charts_div").html("");
     drawChartsByDay(mb, "charts_div");
-    $("#charts_div_byline").html("");
-    drawChartsByLine(mb, "charts_div_byline");
   }
   function load_url() {
     $('#inputfile').val(money);
-      //- fit();
-      console.log(money);
+    $('#inputfile').scrollTop(9999);
+    compute();
   }
   $(document).ready(function() {
      load_url();
@@ -24,8 +23,10 @@ script
 script
   google.load('visualization', '1.0', {'packages':['corechart','table']});
 
-div#debiti
-  textarea(style="width:500px;background:#F3FCF4", rows="5")#inputfile
-  div#charts
-    div#chart_div
-    div#charts_div
+div#debiti.sixteen.columns
+  div.row
+    div.eight.columns.alpha(style="padding-top:10px")
+      textarea(style="width:500px", rows="5")#inputfile
+    div#charts.eight.columns.omega
+      div#chart_div
+      div#charts_div
