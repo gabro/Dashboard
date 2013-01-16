@@ -9,11 +9,11 @@ exports.routes = [
   },
   {
     path: '/eatings/update',
-    route: 'eatings/update',
+    route: 'eatings-update',
     method: 'post'
   },
   {
     path: '/eatings',
-    route: 'eatings/view'
+    route: 'eatings-view'
   }
 ];

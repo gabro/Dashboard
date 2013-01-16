@@ -15,7 +15,7 @@ module.exports = function(req, res) {
     eating.dinner = req.body.dinner == 'yes' ? true : false;
     eating.date = today;
     eating.save(function(err) {
-      res.end({error: undefined);
+      res.end({error: undefined});
     });
   });
 };
