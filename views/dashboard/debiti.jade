@@ -1,0 +1,33 @@
+script
+  function compute() {
+    mb = new MoneyBook();
+    mb.parse($("#inputfile").val());
+    $("#output").html(mb.computeSummary() + mb.computeSummaryByDate());
+    drawChart(mb, "chart_div");
+    $("#charts_div").html("");
+    drawChartsByDay(mb, "charts_div");
+    $("#charts_div_byline").html("");
+    drawChartsByLine(mb, "charts_div_byline");
+  }
+  function load_url() {
+    var url = "https://gist.github.com/raw/4535097/5508039cbebed378221dcb57a308bb84dfcef78d/Money%20Chicago"; 
+    $.get(url, function(data) {
+      $('#inputfile').val(data);
+      fit();
+    });
+  }
+  $(document).ready(function() {
+     load_url();
+   });
+
+//
+  script(src="https://www.google.com/jsapi?key=ABQIAAAAR3t5HDXL0WKLtkVAWuLT2hQDuF7iNupDIJ4DzQ-wmZWlqRknqhTBUnK9d5W-m2lyvAhpJ32tSVBcxg")
+
+script
+  google.load('visualization', '1.0', {'packages':['corechart','table']});
+
+div#debiti
+  textarea#inputfile (style="width:500px;background:#F3FCF4" rows="5")
+  div#charts
+    div#chart_div
+    div#charts_div
