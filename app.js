@@ -1,7 +1,9 @@
 var express = require('express'),
-app = express(),
-server = require('http').createServer(app),
-io = require('socket.io').listen(server);
+	app = express(),
+  	server = require('http').createServer(app),
+  	io = require('socket.io').listen(server),
+    cta = require("./cta-fetcher.js").ctaJSON;
+
 var PUBLIC_DIR = 'public';
 
 app.set('views', __dirname + '/views');
@@ -24,6 +26,14 @@ require('./routes.js').routes.forEach(function(r) {
   args.unshift(r.path);
   args.push(routes[r.route]);
   app[r.method || 'get'].apply(app, args);
+});
+
+io.sockets.on('connection', function (socket) {
+  socket.on('cta-refresh', function () {
+    cta(function(data) {
+      socket.emit('cta-update', data);
+    });
+  });
 });
 
 server.listen(3000);

@@ -7,5 +7,6 @@
     , "jade": ">= 0.0.1"
     , "mongoose" : "x"
     , "socket.io" : "x"
+    , "xml2json" : "x"
   }
 }

@@ -1,7 +1,34 @@
-div(style="width: 785px; height: 435px; overflow: hidden; pointer-events: none;")
-  iframe( id="busmap",
-          width="100%",
-          height="100%",
-          style="position: relative; left: -35px; top: -205px;",
-          src="http://www.ctabustracker.com/bustime/eta/eta.jsp?route=157&direction=East%20Bound&stop=Taylor%20%26%20Throop&id=6696&showAllBusses=on"
-        )
+script(src="/socket.io/socket.io.js")
+script(src="/js/moment.js")
+
+script
+  var refreshInterval = 30;
+  var socket = io.connect('http://localhost:3000');
+  $(document).ready(function() {
+      socket.emit("cta-refresh");
+      setInterval(function(){
+        socket.emit("cta-refresh");
+      }, refreshInterval*1000);
+      socket.on('cta-update', function (data) {
+        var json = JSON.parse(data)["bustime-response"];
+        $("#bus-arrivals tr>td").each(function() {
+          $(this).parent().remove();
+        });
+
+        if (json.error || !json.prd) {
+          $("<tr><td class=\"arrivalTime error\">No arrival times</td></tr>").appendTo("#bus-arrivals");
+        } else {
+          console.log(json);
+          json.prd.forEach(function(prd,idx) {
+            var arrivalTime = moment(prd.prdtm, "YYYYMMDD HH:mm");
+            var now = moment(prd.tmstmp, "YYYYMMDD HH:mm");
+            $("<tr><td class=\"arrivalTime\">"+arrivalTime.from(now)+"</td></tr>").appendTo("#bus-arrivals");
+          });
+        }
+      });
+  });
+
+table(id="bus-arrivals")
+  tr
+    th Arrival Time
+
