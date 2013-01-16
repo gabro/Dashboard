@@ -29,10 +29,11 @@ require('./routes.js').routes.forEach(function(r) {
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.on('cta-refresh', function () {
+  socket.on('cta-refresh', function (params) {
+    console.log(params);
     cta(function(data) {
       socket.emit('cta-update', data);
-    });
+    }, params.busNo, params.stopId, params.maxResults);
   });
 });
 
