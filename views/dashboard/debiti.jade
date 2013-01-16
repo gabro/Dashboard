@@ -10,11 +10,9 @@ script
     drawChartsByLine(mb, "charts_div_byline");
   }
   function load_url() {
-    var url = "https://gist.github.com/raw/4535097/5508039cbebed378221dcb57a308bb84dfcef78d/Money%20Chicago"; 
-    $.get(url, function(data) {
-      $('#inputfile').val(data);
-      fit();
-    });
+    $('#inputfile').val(money);
+      //- fit();
+      console.log(money);
   }
   $(document).ready(function() {
      load_url();
