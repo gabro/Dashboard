@@ -1,3 +1,11 @@
-.pending {
+tr {
+	background-color: #eee;
+}
+
+tr.pending {
 	background-color: red;
+}
+
+tr.updated {
+	background-color: white;
 }

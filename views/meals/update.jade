@@ -17,7 +17,7 @@ html
             th Dinner
         tbody
         each person in people
-          tr
+          tr(class= person.set? 'updated' : '')
             td= person.name
             td
               input(type='checkbox', name='lunch', checked=person.lunch, disabled=person.disabled)
