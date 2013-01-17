@@ -24,9 +24,15 @@
       _fn();
     }
     options = {
-      title: 'Summary..',
-      width: 380,
-      height: 40 * mb.evn.people.length + 20,
+      titlePosition: 'none',
+      title: "asdf",
+      backgroundColor: '9f00a7',
+      colors: ['white'],
+      hAxis: {
+        textPosition: 'none'
+      },
+      width: 190,
+      height: 220,
       legend: 'none'
     };
     chart = new google.visualization.BarChart(document.getElementById(divId));

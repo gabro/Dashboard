@@ -1,0 +1,17 @@
+/* line 1, ../sass/style.scss */
+body {
+  background: white;
+}
+
+/* line 6, ../sass/style.scss */
+#meals table {
+  margin-top: 20px;
+}
+/* line 8, ../sass/style.scss */
+#meals table td {
+  border: none;
+}
+/* line 11, ../sass/style.scss */
+#meals table tr {
+  border: none;
+}

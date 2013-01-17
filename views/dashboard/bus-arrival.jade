@@ -2,38 +2,37 @@ script(src="/socket.io/socket.io.js")
 script(src="/js/moment.js")
 
 script
-    var refreshInterval = 30;
-    var busNo = 157;
-    var stopId = 6696;
-    var socket = io.connect('http://localhost:3000');
-    $(document).ready(function() {
-        // Get the current arrival time
-        socket.emit("cta-refresh", {busNo: busNo, stopId: stopId});
-        // Poll it periodically
-        setInterval(function(){
-            socket.emit("cta-refresh", {busNo: busNo, stopId: stopId});
-        }, refreshInterval*1000);
+  var refreshInterval = 30;
+  var busNo = 157;
+  var stopId = 6696;
+  var socket = io.connect('http://localhost:3000');
+  $(document).ready(function() {
+    // Get the current arrival time
+    socket.emit("cta-refresh", {busNo: busNo, stopId: stopId});
+    // Poll it periodically
+    setInterval(function(){
+      socket.emit("cta-refresh", {busNo: busNo, stopId: stopId});
+    }, refreshInterval*1000);
 
-        socket.on('cta-update', function (data) {
-            var json = JSON.parse(data)["bustime-response"];
-            //remove the previous entries
-            $("#bus-arrivals tr>td").each(function() {
-                $(this).parent().remove();
-            });
+    socket.on('cta-update', function (data) {
+      var json = JSON.parse(data)["bustime-response"];
+      //remove the previous entries
+      $("#bus-arrivals tr>td").each(function() {
+        $(this).parent().remove();
+      });
 
-            if (json.error || !json.prd) {
-                $("<tr><td class=\"arrivalTime error\">No arrival times</td></tr>").appendTo("#bus-arrivals");
-            } else {
-                json.prd.forEach(function(prd,idx) {
-                    var arrivalTime = moment(prd.prdtm, "YYYYMMDD HH:mm");
-                    var now = moment(prd.tmstmp, "YYYYMMDD HH:mm");
-                    $("<tr><td class=\"arrivalTime\">"+arrivalTime.from(now)+"</td></tr>").appendTo("#bus-arrivals");
-                });
-            }
+      if (json.error || !json.prd) {
+        $("<tr><td class=\"arrivalTime error\">No arrival times</td></tr>").appendTo("#bus-arrivals");
+      } else {
+        json.prd.forEach(function(prd,idx) {
+          var arrivalTime = moment(prd.prdtm, "YYYYMMDD HH:mm");
+          var now = moment(prd.tmstmp, "YYYYMMDD HH:mm");
+          $("<tr><td class=\"arrivalTime\">"+arrivalTime.from(now)+"</td></tr>").appendTo("#bus-arrivals");
         });
+      }
     });
+  });
 
-table(id="bus-arrivals")
-    tr
-        th Arrival Time
-
+table#bus-arrivals.two.columns
+  tr
+    th Arrival Time

@@ -1,8 +1,25 @@
 extends layout
 
 block body
-  div.container
-    include debiti
-    include bus-arrival
-    include meals
-    include calendar
+  //- div.container
+  //-   include debiti
+
+  div.page
+    div.page-header
+      div.page-header-content
+        h1 inVilla Dashboard
+    div.page-region
+      div.page-region-content
+        div.tile.bg-color-green
+          div.tile-content
+            include bus-arrival
+        div.tile.double-vertical
+          div.tile-content
+            div#meals
+              include meals
+        div.tile.double-vertical.double.bg-color-orange
+          div.tile-content
+            div#calendar
+              include calendar
+        div#debiti
+          include debiti
