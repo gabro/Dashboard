@@ -36,3 +36,24 @@ body {
 		}
 	}
 }
+
+.arrivaltimes {
+	.bus157 {
+		background: url('../images/157.png') no-repeat bottom left;
+	}
+	table {
+		td {
+			text-align: right;
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		tr {
+			margin: 0;
+			padding: 0;
+		}
+		margin: 0;
+		padding: 0;
+		baseline-shift: sub;
+	}
+}

@@ -27,12 +27,12 @@ script
                     var arrivalTime = moment(prd.prdtm, "YYYYMMDD HH:mm");
                     var now = moment(prd.tmstmp, "YYYYMMDD HH:mm");
                     var humanizedTime = arrivalTime.diff(now, 'minutes') < 1 ? "Due" : arrivalTime.from(now);
-                    $("<tr><td class=\"arrivalTime\">"+humanizedTime+"</td></tr>").appendTo("#bus-arrivals");
+                    $("<tr><td class=\"arrivalTime\">"+humanizedTime.replace("in ", "")+"</td></tr>").appendTo("#bus-arrivals");
                 });
             }
     });
   });
 
-h2 Arrival Times
-    h3(style="margin-top: 20px; text-align: right;") 157
-table#bus-arrivals
+h2(style="margin-bottom: 20px") Arrival Times
+div.arrivaltimes 
+  table#bus-arrivals.bus157

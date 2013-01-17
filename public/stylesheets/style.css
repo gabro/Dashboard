@@ -41,3 +41,26 @@ body {
 #meals-people tr.updated div.mycheckbox.mychecked {
   background: #ffffff !important;
 }
+
+/* line 41, ../sass/style.scss */
+.arrivaltimes .bus157 {
+  background: url("../images/157.png") no-repeat bottom left;
+}
+/* line 44, ../sass/style.scss */
+.arrivaltimes table {
+  margin: 0;
+  padding: 0;
+  baseline-shift: sub;
+}
+/* line 45, ../sass/style.scss */
+.arrivaltimes table td {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+/* line 51, ../sass/style.scss */
+.arrivaltimes table tr {
+  margin: 0;
+  padding: 0;
+}
