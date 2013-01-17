@@ -15,13 +15,13 @@
       if (person.set)
         tr += ' class="updated"';
       tr += '><td>' + person.name +
-      '</td><td><input type="checkbox" disabled';
+      '</td><td><label class="input-control-checkbox"><input type="checkbox" disabled';
       if (person.lunch)
         tr += ' checked';
-      tr += '/></td><td><input type="checkbox" disabled';
+      tr += '/></label></td><td><label class="input-control-checkbox"><input type="checkbox" disabled';
       if (person.dinner)
         tr += ' checked';
-      tr += '/></td>'
+      tr += '/></label></td>'
       $table.append(tr);
     });
   }
