@@ -1,0 +1,51 @@
+.page-region-content {
+	display: -webkit-box;
+	display: box;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+	-webkit-box-flex: 1;
+	box-flex: 1;
+}
+
+.tile.flip-in, .tile.flip-out {
+	-webkit-animation-duration: 1000ms;
+	-webkit-animation-fill-mode: both;
+	-webkit-animation-timing-function: linear;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d;
+}
+
+.tile.flip-in:after {
+	content: "";
+  	position: absolute;
+  	display: block;
+}
+
+.tile.flip-in {
+	-webkit-animation-name: flipIn;
+}
+
+.tile.flip-out {
+	-webkit-animation-name: flipOut;
+	z-index: 10;
+}
+
+@-webkit-keyframes flipIn {
+  0% {
+    -webkit-transform: rotateY(180deg) scale(1);
+  }
+
+  100% {
+    -webkit-transform: rotateY(0deg) scale(1);
+  }
+}
+
+@-webkit-keyframes flipOut {
+  0% {
+    -webkit-transform: rotateY(0deg) scale(1);
+  }
+
+  100% {
+    -webkit-transform: rotateY(-180deg) scale(1);
+  }
+}

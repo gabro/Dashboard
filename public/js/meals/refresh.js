@@ -1,15 +1,14 @@
 (function() {
-  var INTERVAL = 10000,
+  var INTERVAL = 5000,
   socket = io.connect('http://localhost:3000'),
-  $table = undefined;
+  $tile = undefined;
 
   function refresh() {
     socket.emit('meals-refresh');
-    setTimeout(refresh, INTERVAL);
   }
 
   function update(people) {
-    $table.html('');
+    var $newTile = $tile.clone();
     people.forEach(function(person) {
       var tr = '<tr';
       if (person.set)
@@ -26,12 +25,16 @@
       else
         tr += ' class="mycheckbox"';
       tr += '/></td>'
-      $table.append(tr);
+      $newTile.find('table').append(tr);
     });
+    animateTile($tile, $newTile, function() {
+      $tile = $newTile;
+    });
+    setTimeout(refresh, INTERVAL);
   }
 
   $(document).ready(function() {
-    $table = $('#meals-people');
+    $tile = $('#meals').parents('.tile');
     socket.on('meals-update', update);
     refresh();
   });
