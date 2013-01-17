@@ -1,8 +1,9 @@
 var express = require('express'),
-  app = express(),
-    server = require('http').createServer(app),
-    io = require('socket.io').listen(server),
-    cta = require("./cta-fetcher.js").ctaJSON;
+app = express(),
+server = require('http').createServer(app),
+io = require('socket.io').listen(server),
+cta = require("./cta-fetcher.js").ctaJSON,
+meals = require('meals');
 
 var PUBLIC_DIR = 'public';
 
@@ -13,8 +14,8 @@ app.use(app.router);
 app.use(express.static(PUBLIC_DIR));
 
 var mongoose = require('mongoose'),
-    mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/mydb',
-    db = mongoose.connect(mongoUri);
+mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/mydb',
+db = mongoose.connect(mongoUri);
 
 var routes = require('./routes/'),
 middleware = require('./middleware');
@@ -35,6 +36,14 @@ io.sockets.on('connection', function (socket) {
     cta(function(data) {
       socket.emit('cta-update', data);
     }, params.busNo, params.stopId, params.maxResults);
+  });
+  socket.on('meals-refresh', function (params) {
+    meals.get(function(data) {
+      socket.emit('meals-update', meals.names.map(function(name) {
+          return meals.single(data, name);
+        })
+      );
+    });
   });
 });
 

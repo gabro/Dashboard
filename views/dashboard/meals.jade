@@ -1,10 +1,11 @@
 h2 Meals
-table
-  tbody
-  each person in people
-    tr(class= person.set? 'updated' : '')
-      td= person.name
-      td
-        input(type='checkbox', name='lunch', checked=person.lunch, disabled=true)
-      td
-        input(type='checkbox', name='dinner', checked=person.dinner, disabled=true)
+table#meals-people
+  //- each person in people
+  //-   tr(class= person.set? 'updated' : '')
+  //-     td= person.name
+  //-     td
+  //-       input(type='checkbox', name='lunch', checked=person.lunch, disabled=true)
+  //-     td
+  //-       input(type='checkbox', name='dinner', checked=person.dinner, disabled=true)
+
+script(src='/js/meals/refresh.js')
