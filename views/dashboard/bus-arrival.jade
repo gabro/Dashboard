@@ -26,8 +26,8 @@ script
                 json.prd.forEach(function(prd,idx) {
                     var arrivalTime = moment(prd.prdtm, "YYYYMMDD HH:mm");
                     var now = moment(prd.tmstmp, "YYYYMMDD HH:mm");
-                    var humanizedTime = arrivalTime.diff(now, 'minutes') < 1 ? "Due" : arrivalTime.from(now);
-                    $("<tr><td class=\"arrivalTime\">"+humanizedTime.replace("in ", "")+"</td></tr>").appendTo("#bus-arrivals");
+                    var humanizedTime = arrivalTime.diff(now, 'minutes') <= 1 ? "Due" : arrivalTime.from(now);
+                    $("<tr><td class=\"arrivalTime\">"+humanizedTime+"</td></tr>").appendTo("#bus-arrivals");
                 });
             }
     });
