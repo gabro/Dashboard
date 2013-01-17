@@ -1,12 +1,8 @@
+h2 Meals
 table
-  thead
-    tr
-      th
-      th Lunch
-      th Dinner
   tbody
   each person in people
-    tr
+    tr(class= person.set? 'updated' : '')
       td= person.name
       td
         input(type='checkbox', name='lunch', checked=person.lunch, disabled=true)
