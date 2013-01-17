@@ -2,16 +2,16 @@ extends layout
 
 block body
   div.page
-    div.page-header
-      div.page-header-content(style="width: 800px; text-align: right")
-        h1(style="text-align: right") inVilla Dashboard
+    div(style='position: absolute; left: 560px; top: 270px; height: 400px; width: 600px;')
+      h1(style="writing-mode:tb-rl; -webkit-transform:rotate(90deg); -moz-transform:rotate(90deg); -o-transform: rotate(90deg);") inVilla Dashboard
+      //- h1 inVilla Dashboard
     div.page-region
       div.page-region-content
-        div.tile.double-vertical.double.bg-color-orange
+        div.tile.double-vertical.double.bg-color-yellow
           div.tile-content
             div#calendar
               include calendar
-        div.tile.bg-color-green
+        div.tile.bg-color-pinkDark
           div.tile-content
             include bus-arrival
         div.tile.bg-color-blue

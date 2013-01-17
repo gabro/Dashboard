@@ -26,8 +26,8 @@
     options = {
       titlePosition: 'none',
       title: "asdf",
-      backgroundColor: '9f00a7',
-      colors: ['edaef0'],
+      backgroundColor: 'b91d47',
+      colors: ['d7748e'],
       vAxis: {
         textStyle: {
           color: 'white',
@@ -39,10 +39,10 @@
         textPosition: 'none',
         gridlines: {
           count: 0,
-          color: 'edaef0'
+          color: 'd7748e'
         },
         viewWindowMode: 'pretty',
-        baselineColor: 'edaef0'
+        baselineColor: 'd7748e'
       },
       width: 210,
       height: 260,

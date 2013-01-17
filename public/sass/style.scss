@@ -19,3 +19,20 @@ body {
 		}
 	}
 }
+
+#meals-people {
+	tr td {line-height: 16px;}
+	div.mycheckbox {
+			width: 10px;
+			height: 10px;
+			background: #61a6f0;
+	}
+	tr.updated {
+		div.mycheckbox {
+			background: #2d89ef;
+			&.mychecked {
+				background: #ffffff !important;
+			}
+		}
+	}
+}

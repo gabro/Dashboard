@@ -14,10 +14,10 @@ window.drawChart = (mb, divId) =>
   options =
     titlePosition: 'none'
     title: "asdf"
-    backgroundColor: '9f00a7'
-    colors: ['edaef0']
+    backgroundColor: 'b91d47'
+    colors: ['d7748e']
     vAxis: {textStyle: {color: 'white', fontName: "Open Sans"}, textPosition: "out"}
-    hAxis: {textPosition: 'none', gridlines: {count: 0, color: 'edaef0'}, viewWindowMode: 'pretty', baselineColor: 'edaef0'}
+    hAxis: {textPosition: 'none', gridlines: {count: 0, color: 'd7748e'}, viewWindowMode: 'pretty', baselineColor: 'd7748e'}
     width: 210
     height: 260
     legend: 'none'
