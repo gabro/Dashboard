@@ -3,15 +3,22 @@ body {
   background: white;
 }
 
-/* line 6, ../sass/style.scss */
+/* line 5, ../sass/style.scss */
+.page {
+  width: 940px;
+  margin: auto;
+  background-color: #fff;
+}
+
+/* line 12, ../sass/style.scss */
 #meals table {
   margin-top: 20px;
 }
-/* line 8, ../sass/style.scss */
+/* line 14, ../sass/style.scss */
 #meals table td {
   border: none;
 }
-/* line 11, ../sass/style.scss */
+/* line 17, ../sass/style.scss */
 #meals table tr {
   border: none;
 }

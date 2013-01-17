@@ -1,25 +1,26 @@
 extends layout
 
 block body
-  //- div.container
-  //-   include debiti
-
   div.page
     div.page-header
-      div.page-header-content
-        h1 inVilla Dashboard
+      div.page-header-content(style="width: 800px; text-align: right")
+        h1(style="text-align: right") inVilla Dashboard
     div.page-region
       div.page-region-content
-        div.tile.bg-color-green
-          div.tile-content
-            include bus-arrival
-        div.tile.double-vertical
-          div.tile-content
-            div#meals
-              include meals
         div.tile.double-vertical.double.bg-color-orange
           div.tile-content
             div#calendar
               include calendar
+        div.tile.bg-color-green
+          div.tile-content
+            include bus-arrival
+        div.tile.bg-color-blue
+          div.tile-content
+            div#meals
+              include meals
+        div.tile.double(style="background-color: #6ebdfc")
+          div.tile-content
+            div#weather
+              include weather    
         div#debiti
           include debiti

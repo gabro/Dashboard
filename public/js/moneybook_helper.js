@@ -27,12 +27,25 @@
       titlePosition: 'none',
       title: "asdf",
       backgroundColor: '9f00a7',
-      colors: ['white'],
-      hAxis: {
-        textPosition: 'none'
+      colors: ['edaef0'],
+      vAxis: {
+        textStyle: {
+          color: 'white',
+          fontName: "Open Sans"
+        },
+        textPosition: "out"
       },
-      width: 190,
-      height: 220,
+      hAxis: {
+        textPosition: 'none',
+        gridlines: {
+          count: 0,
+          color: 'edaef0'
+        },
+        viewWindowMode: 'pretty',
+        baselineColor: 'edaef0'
+      },
+      width: 210,
+      height: 260,
       legend: 'none'
     };
     chart = new google.visualization.BarChart(document.getElementById(divId));
