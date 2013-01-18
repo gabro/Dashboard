@@ -44,6 +44,7 @@ body {
 
 /* line 41, ../sass/style.scss */
 .arrivaltimes .bus157 {
+  min-height: 35px;
   background: url("../images/157.png") no-repeat bottom left;
 }
 /* line 44, ../sass/style.scss */
