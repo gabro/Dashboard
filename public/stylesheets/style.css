@@ -48,6 +48,7 @@ body {
 }
 /* line 44, ../sass/style.scss */
 .arrivaltimes table {
+  padding-top: 14px;
   margin: 0;
   padding: 0;
   baseline-shift: sub;
