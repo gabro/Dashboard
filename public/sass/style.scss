@@ -8,7 +8,7 @@ body {
     background-color: #fff;
 }
 
-.meals {
+#meals {
 	table {
 		margin-top: 20px;
 		td {
@@ -20,7 +20,7 @@ body {
 	}
 }
 
-.meals table {
+#meals table {
 	tr td {line-height: 16px;}
 	div.mycheckbox {
 			width: 10px;
