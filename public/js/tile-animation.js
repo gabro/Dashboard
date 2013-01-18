@@ -17,9 +17,6 @@
         $old.remove();
         cb();
       })
-      .addClass('flip-out')
-    setTimeout(function() {
-      $new.css('z-index', 11);
-    }, DURATION/2);
+      .addClass('flip-out');
   }
 })();
