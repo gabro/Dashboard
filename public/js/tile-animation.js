@@ -1,5 +1,5 @@
 (function() {
-  var DURATION = 1000;
+  var DURATION = 900;
 
   window.animateTile = function($old, $new, cb) {
     $new
@@ -13,7 +13,13 @@
       .insertAfter($old);
     $old
       .bind('webkitAnimationEnd', function() {
-        $new.removeClass('flip-in');
+        $new
+          .removeClass('flip-in')
+          .css({
+            position: 'relative',
+            top: 'auto',
+            left: 'auto'
+          });
         $old.remove();
         cb();
       })
