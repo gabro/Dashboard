@@ -1,7 +1,22 @@
 (function() {
   var INTERVAL = 5000,
   socket = io.connect('http://localhost:3000'),
-  $tile = undefined;
+  $tile = undefined,
+  previous = [];
+
+  function equals(p1, p2) {
+    if (p1.length != p2.length)
+      return false;
+    for (var i = 0; i < p1.length; i++) {
+      for (var a in p1[i]) {
+        if (p1[i].hasOwnProperty(a)) {
+          if (p1[i][a] != p2[i][a])
+            return false
+        }
+      }
+    }
+    return true;
+  }
 
   function refresh() {
     socket.emit('meals-refresh');
@@ -27,9 +42,12 @@
       tr += '/></td>'
       $newTile.find('table').append(tr);
     });
-    animateTile($tile, $newTile, function() {
-      $tile = $newTile;
-    });
+    if (!equals(people, previous)) {
+      animateTile($tile, $newTile, function() {
+        $tile = $newTile;
+      });
+    }
+    previous = people;
     setTimeout(refresh, INTERVAL);
   }
 
