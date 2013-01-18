@@ -24,6 +24,7 @@
 
   function update(people) {
     var $newTile = $tile.clone();
+    $newTile.find('table').html('');
     people.forEach(function(person) {
       var tr = '<tr';
       if (person.set)
