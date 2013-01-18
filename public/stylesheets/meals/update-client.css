@@ -31,9 +31,22 @@ th {
 	/*padding-top: 30px;*/
 }
 
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	.input-control.switch {
+		/*left: -100px !important;*/
+	}
+}
+
+label * {
+	display: block;
+}
+
 .input-control.switch {
 	margin-bottom: 130px !important;
-	left: -100px;
+	width: 200px;
 }
 
 .input-control.switch.lunch .helper:before {
