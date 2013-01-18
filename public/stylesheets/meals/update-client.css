@@ -1,11 +1,56 @@
+body {
+	/*background-color: #eee;*/
+}
+
 tr {
-	background-color: #eee;
+	/*background-color: #eee;*/
 }
 
 tr.pending {
-	background-color: red;
+	/*background-color: red;*/
 }
 
 tr.updated {
-	background-color: white;
+	/*background-color: white;*/
+}
+
+td {
+	text-align: center;
+	height: 100px;
+}
+
+td a {
+	margin: auto;
+}
+
+th {
+	font-family: "Open Sans";
+	font-weight: normal !important;
+	font-size: 2em;
+	line-height: 2em;
+	/*padding-top: 30px;*/
+}
+
+.input-control.switch {
+	margin-bottom: 130px !important;
+	left: -100px;
+}
+
+.input-control.switch.lunch .helper:before {
+	background-color: #ffc40d;
+}
+
+.input-control.switch.dinner .helper:before {
+	background-color: #2d89ef;
+}
+
+.input-control.switch .helper:before {
+	height: 75px !important;
+	width: 200px !important;
+}
+
+.input-control.switch .helper:after {
+	height: 75px !important;
+	width: 30px !important;
+	left: 170px !important;
 }

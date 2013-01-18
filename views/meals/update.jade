@@ -4,22 +4,31 @@ html
     title= title
     script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js")
     script(type="text/javascript", src="/js/meals/update-client.js")
-    link(rel="stylesheet", href="/css/meals/update-client.css")
-  
+    link(rel="stylesheet", href="../../stylesheets/modern.css")
+    link(rel="stylesheet", href="../../stylesheets/modern-responsive.css")
+    link(rel="stylesheet", href="/../../stylesheets/meals/update-client.css")
+
   body
     form(action='/meals/update', method='post', id='meals-update')
-      input(type='hidden', name='name', value=selfName)
-      table
-        thead
-          tr
-            th
-            th Lunch
-            th Dinner
+      input(type='hidden', name='name', value=person.name)
+
+      table(width="200px")
         tbody
-        each person in people
+          tr
+            th Lunch
           tr(class= person.set? 'updated' : '')
-            td= person.name
             td
-              input(type='checkbox', name='lunch', checked=person.lunch, disabled=person.disabled)
+              label(class="input-control switch lunch")
+                input(type='checkbox', name='lunch', checked=person.lunch)
+                span(class="helper")
+          tr
+            th Dinner
+          tr(class= person.set? 'updated' : '')
             td
-              input(type='checkbox', name='dinner', checked=person.dinner, disabled=person.disabled)
+              label(class="input-control switch dinner")
+                input(type='checkbox', name='dinner', checked=person.dinner)
+                span(class="helper")
+          tr
+            td
+              a(href="/", class="back-button big page-back")
+              | Back to the Dashboard

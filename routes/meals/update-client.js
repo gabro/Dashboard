@@ -9,14 +9,11 @@ var ea = require('meals'),
 module.exports = function(req, res) {
   self = req.params.name;
   ea.get(function(meals) {
-    var people = ea.names.map(function(name) {
-      return ea.single(meals, name, self);
-    });
+    var person = ea.single(meals, self, self);
 
     var params = {
       title: 'Update Meals',
-      people: people,
-      selfName: self
+      person: person
     };
     res.render('meals/update', params);
   });
