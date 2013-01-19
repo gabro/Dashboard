@@ -47,6 +47,12 @@ body {
   min-height: 35px;
   background: url("../images/157.png") no-repeat bottom left;
 }
+
+.arrivaltimes .bus12 {
+  min-height: 35px;
+  background: url("../images/12.png") no-repeat bottom left;
+}
+
 /* line 44, ../sass/style.scss */
 .arrivaltimes table {
   padding-top: 14px;

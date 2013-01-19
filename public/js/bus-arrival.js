@@ -1,39 +1,48 @@
 $(document).ready(function() {
   var refreshInterval = 30;
-  var busNo = 157;
-  var stopId = 6696;
   var socket = io.connect('/');
-  var $oldTile, $newTile;
 
-  function appendRow(prd) {
+  function appendRow(prd,busNo) {
     var arrivalTime = moment(prd.prdtm, "YYYYMMDD HH:mm");
     var now = moment(prd.tmstmp, "YYYYMMDD HH:mm");
     var humanizedTime = arrivalTime.diff(now, 'minutes') <= 1 ? "Due" : arrivalTime.from(now);
-    $("<tr><td class=\"arrivalTime\">"+humanizedTime.replace("in ", "")+"</td></tr>").appendTo($("#bus-arrivals"));
+    $("<tr><td class=\"arrivalTime\">"+humanizedTime.replace("in ", "")+"</td></tr>").appendTo($("#bus-arrivals-"+busNo));
+  }
+
+  function emtpy(table) {
+    table.find("tr").remove();
   }
 
   // Get the current arrival time
-  socket.emit("cta-refresh", {busNo: busNo, stopId: stopId});
+  socket.emit("cta-refresh", {busNo: 157, stopId: 6696});
+  socket.emit("cta-refresh", {busNo: 12, stopId: 302});
   // Poll it periodically
   setInterval(function(){
-    socket.emit("cta-refresh", {busNo: busNo, stopId: stopId});
+    socket.emit("cta-refresh", {busNo: 157, stopId: 6696});
+    socket.emit("cta-refresh", {busNo: 12, stopId: 302});
   }, refreshInterval*1000);
 
   socket.on('cta-update', function (data) {
     var json = JSON.parse(data)["bustime-response"];
-
-    if (!$oldTile)
-      $oldTile = $('#bus-arrivals').parents('.tile');
-    $newTile = $oldTile.clone();
-    $newTile.find('table').html('');
+    var busNo;
+    var $timetable;
 
     if (json.error || json.prd === undefined) {
-      $("<tr><td class=\"arrivalTime error\">No arrival times</td></tr>").appendTo($("#bus-arrivals"));
+      busNo = json.error.rt;
+      $timetable = $("#bus-arrivals-"+busNo);
+      emtpy($timetable);
+      $("<tr><td class=\"arrivalTime error\">No arrival times</td></tr>").appendTo($timetable);
     } else {
       if (!(json.prd instanceof Array)) {
-        appendRow(json.prd);
+        busNo = json.prd.rt;
+        $timetable = $("#bus-arrivals-"+busNo);
+        emtpy($timetable);
+        appendRow(json.prd, busNo);
       } else {
-        json.prd.forEach(appendRow);
+        busNo = json.prd[0].rt;
+        $timetable = $("#bus-arrivals-"+busNo);
+        emtpy($timetable);
+        json.prd.forEach(function(prd) {appendRow(prd, busNo);});
       }
     }
   });
