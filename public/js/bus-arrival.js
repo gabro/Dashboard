@@ -2,7 +2,7 @@ $(document).ready(function() {
   var refreshInterval = 30;
   var busNo = 157;
   var stopId = 6696;
-  var socket = io.connect('http://localhost:3000');
+  var socket = io.connect('/');
   var $oldTile, $newTile;
 
   function appendRow(prd) {

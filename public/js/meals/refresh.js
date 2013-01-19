@@ -1,6 +1,6 @@
 (function() {
   var INTERVAL = 5000,
-  socket = io.connect('http://localhost:3000'),
+  socket = io.connect('/'),
   $tile = undefined,
   previous = [];
 
