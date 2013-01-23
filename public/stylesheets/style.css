@@ -43,31 +43,33 @@ body {
 }
 
 /* line 41, ../sass/style.scss */
-.arrivaltimes .bus157 {
+.arrivaltimes .timetable {
   min-height: 35px;
+}
+/* line 44, ../sass/style.scss */
+.arrivaltimes .bus157 {
   background: url("../images/157.png") no-repeat bottom left;
 }
-
+/* line 47, ../sass/style.scss */
 .arrivaltimes .bus12 {
-  min-height: 35px;
+  padding-top: 10px;
   background: url("../images/12.png") no-repeat bottom left;
 }
-
-/* line 44, ../sass/style.scss */
+/* line 51, ../sass/style.scss */
 .arrivaltimes table {
   padding-top: 14px;
   margin: 0;
   padding: 0;
   baseline-shift: sub;
 }
-/* line 45, ../sass/style.scss */
+/* line 52, ../sass/style.scss */
 .arrivaltimes table td {
   text-align: right;
   margin: 0;
   padding: 0;
   border: none;
 }
-/* line 51, ../sass/style.scss */
+/* line 58, ../sass/style.scss */
 .arrivaltimes table tr {
   margin: 0;
   padding: 0;
