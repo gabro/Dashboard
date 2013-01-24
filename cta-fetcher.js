@@ -3,7 +3,8 @@ var parser = require('xml2json');
 
 exports.ctaJSON = function(cb, busNo, stopId, maxResults) {
     var prot = http;
-    var apiKey = "NLAQqgV9tfMYgFkHvnELZFczk";
+    // var apiKey = "NLAQqgV9tfMYgFkHvnELZFczk";
+    var apiKey = "EXWuqG86TLwsKbfaTXeNnNs9D";
     var host = "www.ctabustracker.com";
     var path = "/bustime/api/v1/getpredictions?key="+apiKey+"&stpid="+stopId+"&rt="+busNo;
     if (maxResults !== undefined)
