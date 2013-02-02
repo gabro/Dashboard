@@ -187,7 +187,7 @@
         this.evn.lines.push(line);
         return true;
       }
-      pattern = /^\s*([\w\ \'\*\%]+?)\s*\(\s*(.+)\s*\)\s*([^\#\&]+)?\s*(\&?)\s*(\#.+)?/;
+      pattern = /^\s*([\w\ \'\*\%\~]+?)\s*\(\s*(.+)\s*\)\s*([^\#\&]+)?\s*(\&?)\s*(\#.+)?/;
       if (pattern.test(txtLine)) {
         match = pattern.exec(txtLine);
         line = new Line(match[1]);
@@ -263,7 +263,7 @@
           line.date = this.date;
         }
         line.string = txtLine;
-        if (line.desc === 'debt') {
+        if (line.desc === 'debt' || ~line.desc.indexOf("~")) {
           line.type = 'debt';
         } else if (line.desc === 'payback') {
           line.type = 'payback';

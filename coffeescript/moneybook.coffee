@@ -141,7 +141,7 @@ window.MoneyBook = class MoneyBook
       return true
 
     # value lines  
-    pattern = /^\s*([\w\ \'\*\%]+?)\s*\(\s*(.+)\s*\)\s*([^\#\&]+)?\s*(\&?)\s*(\#.+)?/
+    pattern = /^\s*([\w\ \'\*\%\~]+?)\s*\(\s*(.+)\s*\)\s*([^\#\&]+)?\s*(\&?)\s*(\#.+)?/
     if pattern.test txtLine
       match = pattern.exec txtLine
       line = new Line(match[1])
@@ -194,7 +194,7 @@ window.MoneyBook = class MoneyBook
       if @date != null
         line.date = @date
       line.string = txtLine
-      if line.desc == 'debt'
+      if line.desc == 'debt' or ~line.desc.indexOf "~"
         line.type = 'debt'
       else if line.desc == 'payback'
         line.type = 'payback'
